@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  TableViewController.h
 //  BlogReader
 //
 //  Created by Brandon Lee on 3/18/16.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface TableViewController : UITableViewController
 
+@property (nonatomic, strong) NSArray *blogPosts;
 
 @end
-
