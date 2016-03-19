@@ -19,19 +19,10 @@
     
     NSURL *blogURL = [NSURL URLWithString:@"http://blog.teamtreehouse.com/api/get_recent_summary/"];
     NSData *jsonData = [NSData dataWithContentsOfURL:blogURL];
-    
-    NSLog(@"%@", jsonData);
-    
-    NSDictionary *blogPost1 = [NSDictionary dictionaryWithObjectsAndKeys:@"The Missing Widget in Android", @"title",
-                               @"Ben Jakuben", @"author", nil];
-    
-    NSDictionary *blogPost2 = [NSDictionary dictionaryWithObjectsAndKeys:@"Getting Started with iOS Development", @"title",
-                               @"Brandon Lee", @"author", nil];
-    
-    NSDictionary *blogPost3 = [NSDictionary dictionaryWithObjectsAndKeys:@"Getting Started with Things", @"title",
-                               @"Brandon", @"author", nil];
-    
-    self.blogPosts = [NSArray arrayWithObjects: blogPost1, blogPost2, blogPost3, nil];
+    NSError *error = nil;
+    NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];
+    NSLog(@"%@",dataDictionary);
+    self.blogPosts = [dataDictionary objectForKey:@"posts"];
 }
 
 - (void)didReceiveMemoryWarning {
