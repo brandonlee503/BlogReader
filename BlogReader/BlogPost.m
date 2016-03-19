@@ -10,12 +10,18 @@
 
 @implementation BlogPost
 
-- (void) setTitle:(NSString *)_title {
-    title = _title;
+- (id) initWithTitle:(NSString *)title {
+    self = [super init];
+    
+    if (self) {
+        self.title = title;
+    }
+    
+    return self;
 }
 
-- (NSString *) title {
-    return title;
++ (id) blogPostWithTitle:(NSString *)title {
+    return [[self alloc] initWithTitle:title];
 }
 
 @end
