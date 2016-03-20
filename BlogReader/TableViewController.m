@@ -18,18 +18,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    BlogPost *bp = [[BlogPost alloc] initWithTitle: @"title"];
-    bp.author = @"Author";
-    
-    BlogPost *bp1 = [BlogPost blogPostWithTitle:@"another title"];
-    bp1.author = @"Brandon";
-    
+    // Fetch data from API and load into dictionary
     NSURL *blogURL = [NSURL URLWithString:@"http://blog.teamtreehouse.com/api/get_recent_summary/"];
     NSData *jsonData = [NSData dataWithContentsOfURL:blogURL];
     NSError *error = nil;
     NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];
     NSLog(@"%@",dataDictionary);
-    self.blogPosts = [dataDictionary objectForKey:@"posts"];
+    
+    // Declare mutable array and store JSON dictionary data representations of blog posts
+    self.blogPosts = [NSMutableArray array];
+    NSArray *blogPostsArray = [dataDictionary objectForKey:@"posts"];
+    
+    // Add blogpost objects into blogPostsArray
+    for (NSDictionary *bpDictionary in blogPostsArray) {
+        BlogPost *blogPost = [BlogPost blogPostWithTitle:[bpDictionary objectForKey:@"title"]];
+        blogPost.author = [bpDictionary objectForKey:@"author"];
+        blogPost.thumbnail = [bpDictionary objectForKey:@"thumbnail"];
+        [self.blogPosts addObject:blogPost];
+    }
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,10 +58,15 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"Cell" forIndexPath:indexPath];
     
-    NSDictionary *blogPost = [self.blogPosts objectAtIndex:indexPath.row];
+    BlogPost *blogPost = [self.blogPosts objectAtIndex:indexPath.row];
+    
+    // Get image data and set into image
+    NSData *imageData = [NSData dataWithContentsOfURL:blogPost.thumbnailURL];
+    UIImage *image = [UIImage imageWithData:imageData];
+    
     // Configure the cell...
-    cell.textLabel.text = [blogPost valueForKey:@"title"];
-    cell.detailTextLabel.text = [blogPost valueForKey:@"author"];
+    cell.textLabel.text = blogPost.title;
+    cell.detailTextLabel.text = blogPost.author;
     
     return cell;
 }
