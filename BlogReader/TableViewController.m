@@ -60,9 +60,15 @@
     
     BlogPost *blogPost = [self.blogPosts objectAtIndex:indexPath.row];
     
-    // Get image data and set into image
-    NSData *imageData = [NSData dataWithContentsOfURL:blogPost.thumbnailURL];
-    UIImage *image = [UIImage imageWithData:imageData];
+    // Null image URL Checking
+    if ([blogPost.thumbnail isKindOfClass:[NSString class]]) {
+        // Get image data and set into image
+        NSData *imageData = [NSData dataWithContentsOfURL:blogPost.thumbnailURL];
+        UIImage *image = [UIImage imageWithData:imageData];
+        cell.imageView.image = image;
+    } else {
+        cell.imageView.image = [UIImage imageNamed:@"treehouse.png"];
+    }
     
     // Configure the cell...
     cell.textLabel.text = blogPost.title;
