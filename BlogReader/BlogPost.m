@@ -30,4 +30,13 @@
     return [NSURL URLWithString:self.thumbnail];
 }
 
+- (NSString *) formattedDate {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *tempDate = [dateFormatter dateFromString:self.date];
+    
+    [dateFormatter setDateFormat:@"EE MMM, dd"];
+    return [dateFormatter stringFromDate:tempDate];
+}
+
 @end
