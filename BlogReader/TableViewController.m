@@ -35,6 +35,7 @@
         blogPost.author = [bpDictionary objectForKey:@"author"];
         blogPost.thumbnail = [bpDictionary objectForKey:@"thumbnail"];
         blogPost.date = [bpDictionary objectForKey:@"date"];
+        blogPost.url = [NSURL URLWithString:[bpDictionary objectForKey:@"url"]];
         [self.blogPosts addObject:blogPost];
     }
     
@@ -111,6 +112,17 @@
     return YES;
 }
 */
+
+#pragma mark - Table view delegate
+
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"Row selected: %ld",(long)indexPath.row);
+    BlogPost *blogPost = [self.blogPosts objectAtIndex:indexPath.row];
+    
+    // Receive a shared singleton instance of UIAppliation
+    UIApplication *application = [UIApplication sharedApplication];
+    [application openURL:blogPost.url];
+}
 
 /*
 #pragma mark - Navigation
