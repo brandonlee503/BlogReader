@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		161572B21C9FBBE70044F107 /* treehouse.png in Resources */ = {isa = PBXBuildFile; fileRef = 161572B11C9FBBE70044F107 /* treehouse.png */; };
+		161572B51C9FCAAD0044F107 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 161572B41C9FCAAD0044F107 /* WebViewController.m */; };
 		1644581B1C9D5E43003FFA89 /* BlogPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 1644581A1C9D5E43003FFA89 /* BlogPost.m */; };
 		16FD57BB1C9BE602007D8155 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FD57BA1C9BE602007D8155 /* main.m */; };
 		16FD57BE1C9BE602007D8155 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FD57BD1C9BE602007D8155 /* AppDelegate.m */; };
@@ -38,6 +39,8 @@
 
 /* Begin PBXFileReference section */
 		161572B11C9FBBE70044F107 /* treehouse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = treehouse.png; path = ../../../Downloads/BlogReader/BlogReader/treehouse.png; sourceTree = "<group>"; };
+		161572B31C9FCAAD0044F107 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		161572B41C9FCAAD0044F107 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		1644581A1C9D5E43003FFA89 /* BlogPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogPost.m; sourceTree = "<group>"; };
 		1644581C1C9D5E5E003FFA89 /* BlogPost.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlogPost.h; sourceTree = "<group>"; };
 		16FD57B61C9BE602007D8155 /* BlogReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlogReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,10 +115,13 @@
 				16FD57ED1C9BEB07007D8155 /* TableViewController.m */,
 				1644581C1C9D5E5E003FFA89 /* BlogPost.h */,
 				1644581A1C9D5E43003FFA89 /* BlogPost.m */,
+				161572B31C9FCAAD0044F107 /* WebViewController.h */,
+				161572B41C9FCAAD0044F107 /* WebViewController.m */,
 				16FD57C21C9BE602007D8155 /* Main.storyboard */,
 				16FD57C51C9BE602007D8155 /* Assets.xcassets */,
 				16FD57C71C9BE602007D8155 /* LaunchScreen.storyboard */,
 				16FD57CA1C9BE602007D8155 /* Info.plist */,
+				161572B11C9FBBE70044F107 /* treehouse.png */,
 				16FD57B91C9BE602007D8155 /* Supporting Files */,
 			);
 			path = BlogReader;
@@ -125,7 +131,6 @@
 			isa = PBXGroup;
 			children = (
 				16FD57BA1C9BE602007D8155 /* main.m */,
-				161572B11C9FBBE70044F107 /* treehouse.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -280,6 +285,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				16FD57BE1C9BE602007D8155 /* AppDelegate.m in Sources */,
+				161572B51C9FCAAD0044F107 /* WebViewController.m in Sources */,
 				16FD57EE1C9BEB07007D8155 /* TableViewController.m in Sources */,
 				16FD57BB1C9BE602007D8155 /* main.m in Sources */,
 				1644581B1C9D5E43003FFA89 /* BlogPost.m in Sources */,
